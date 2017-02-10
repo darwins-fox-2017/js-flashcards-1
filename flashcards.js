@@ -34,8 +34,7 @@ class Flashcard {
         console.log(`============================================`);
         console.log(`Selamat jawaban anda benar semua`);
         console.log(`============================================`);
-      }
-      else if (answer.toLowerCase() == data[i].term.toLowerCase()) {
+      } else if (answer.toLowerCase() == data[i].term.toLowerCase()) {
         console.log(`Correct!`);
         i++
         rightAns++
