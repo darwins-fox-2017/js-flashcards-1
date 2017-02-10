@@ -3,15 +3,19 @@ import * as fs from 'fs'
 export class Model {
   constructor(file) {
     this.file = file
+    this.data
   }
 
-  getData(err, data) {
-    let dataJson = JSON.parse(data)
-    return dataJson
+  readData() {
+    this.data = fs.readFileSync(this.file, 'utf8')
+    return this
   }
 
-  readData(callback) {
-      fs.readFile(this.file, 'utf8', callback)
+  getParseData() {
+    return JSON.parse(this.data)
   }
 
 }
+// let mod = new Model('../data.json')
+// mod.readData()
+// console.log(mod.data)

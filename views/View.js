@@ -8,6 +8,7 @@ export class View {
       prompt: 'OHAI> '
     })
   }
+  
   static showMessage(message) {
     this.readline.prompt()
   }
