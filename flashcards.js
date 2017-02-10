@@ -15,17 +15,15 @@ class Flashcard {
 
     rl.setPrompt(this.data[questionLine].definition + " ")
     rl.prompt();
-    rl.on('line', (line) => {
-      if (Number(line) === this.data[questionLine].term) {
+    rl.on('line', (answer) => {
+      if (answer.toLowerCase() === this.data[questionLine].term.toLowerCase()) {
         console.log('Yak betul!');
         questionLine++
-        console.log(questionLine)
         correct++
-        console.log(`Jawaban Benar ${correct}`)
+        console.log(`Good!! Correct Answer`)
       } else {
-        console.log('Salah!!!');
         wrong++
-        console.log(`Jawaban Salah ${wrong}`)
+        console.log(`Incorrect! Try Again`)
       }
       if (questionLine < this.data.length) {
         rl.setPrompt(this.data[questionLine].definition + " ")
