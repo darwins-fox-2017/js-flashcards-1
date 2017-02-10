@@ -66,7 +66,6 @@ class Controllers{
           case questions.data[i].term.toUpperCase():
             view.correctAnswer();
             (i==questions.data.length-1)? rl.close() : i++
-            console.log(i);
             rl.setPrompt(`\n` + view.definition()+ ` ${questions.data[i].definition}\n\n` + view.guess())
             rl.prompt()
             break;
