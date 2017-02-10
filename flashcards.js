@@ -13,22 +13,27 @@ console.log('Wellcome to JS flash Card. To play, just enter the correct term for
     'Ready ?? Press enter to start!');
 
 let i = 0
-console.log(dataFile[i]['defini(tion']);
+rl.setPrompt(`${dataFile[i]['definition']} \n `);
+rl.prompt()
 rl.on('line', (line) => {
-  if (i == dataFile.length){
-        rl.close()
-      }
-  else if (line === dataFile[i]['term']) {
-      i++
-        console.log(`${dataFile[i]['definition']}`);
-        rl.prompt()
-    }
-  else {
-        console.log(`Your inout ${line} is false!`);
+    if (line === dataFile[i]['term'].toLowerCase()) {
+        i++
+        if (i < dataFile.length) {
+            rl.setPrompt(`${dataFile[i]['definition']} \n`);
+            rl.prompt()
+        }
+        else{
+          rl.close()
+        }
+    } else {
+        console.log(`Your input ${line} is false!`);
         rl.prompt()
     }
 
-      });
+}).on('close', () => {
+    console.log('Have a great day!');
+    process.exit(0);
+});
 
 // let i = 0
 // console.log(`${dataFile[i]['definition']}\n\nJawaban : \n`)
