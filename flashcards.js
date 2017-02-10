@@ -1,5 +1,4 @@
 "use strict"
-// write your code here
 let jsonfile = require ('jsonfile')
 const readline = require('readline')
 const argv = process.argv
@@ -62,14 +61,16 @@ class Controllers{
     rl.prompt();
 
     rl.on('line', (answer) => {
-      if(i+1<questions.data.length){
+      if(i<questions.data.length){
         switch (answer.trim().toUpperCase()) {
           case questions.data[i].term.toUpperCase():
-            view.correctAnswer()
-            i++
+            view.correctAnswer();
+            (i==questions.data.length-1)? rl.close() : i++
+            console.log(i);
             rl.setPrompt(`\n` + view.definition()+ ` ${questions.data[i].definition}\n\n` + view.guess())
             rl.prompt()
             break;
+
           default:
             view.incorrectAnswer()
             rl.prompt()
