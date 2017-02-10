@@ -1,0 +1,23 @@
+{
+  "name": "js-flashcards-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "flashcard.js",
+  "dependencies": {
+    "readline-sync": "^1.4.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darwins-fox-2017/js-flashcards-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darwins-fox-2017/js-flashcards-1/issues"
+  },
+  "homepage": "https://github.com/darwins-fox-2017/js-flashcards-1#readme"
+}
