@@ -5,13 +5,12 @@ import * as fs from 'fs'
 
 class Flashcards {
   constructor(file) {
-    this.file = file
+    this.file            = file
     this.currentQuestion = 0
-    this.trueAnswer = 0
-    this.wrongAnswer = 0
-    this.questionRemain = this.readData().getParseData().length
-    this.data = this.readData().getParseData()
-    // this.welcomeScreen()
+    // this.trueAnswer      = 0
+    // this.wrongAnswer     = 0
+    this.questionRemain  = this.readData().getParseData().length
+    this.data            = this.readData().getParseData()
   }
 
   welcomeScreen() {
@@ -30,22 +29,26 @@ class Flashcards {
   flash() {
     this.welcomeScreen()
     let rl = readline.createInterface({
-      input: process.stdin,
+      input : process.stdin,
       output: process.stdout,
-      // prompt: 'Welcome to JS Flash Cards. To plat, just enter the correct term for each definition. Ready? Go!'
     })
 
-    // rl.prompt()
+    rl.setPrompt('\nDefinition\n'+this.data[this.currentQuestion].definition+'\nGuess: ')
+    rl.prompt()
 
     rl.on('line', (line) => {
       // let jsonCards = this.readData().getParseData()
       if (this.questionRemain > 0) {
-        this.getQuestion()
         // rl.setPrompt('Guess: ')
-        if (this.data[this.currentQuestion].term === line) {
+        if (this.data[this.currentQuestion].term.toLowerCase() === line.toLowerCase()) {
           console.log('Correct!')
           this.currentQuestion++
           this.trueAnswer++
+          this.questionRemain--
+          if (this.questionRemain < 1) {
+            rl.close()
+          }
+          rl.setPrompt('\nDefinition\n'+this.data[this.currentQuestion].definition+'\nGuess: ')
           rl.prompt()
         } else {
           console.log('Incorrect! Try again.')
@@ -54,16 +57,10 @@ class Flashcards {
         }
       }
     }).on('close', () => {
-      console.log('Have a great day!')
+      console.log('The game has finished. Have a great day!')
       process.exit(0)
     })
   }
-
-  getQuestion(questionIndex) {
-    console.log('Definition')
-    console.log(this.data[this.currentQuestion].definition)
-  }
-
 }
 
 let flashCards = new Flashcards('data.json')
