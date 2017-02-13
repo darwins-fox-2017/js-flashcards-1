@@ -16,7 +16,7 @@ class Flashcard {
 
   }
 
-  run() {
+  game() {
     console.log(`Welcome to JS Flash Cards. To play, just enter the correct term for each definition. Ready? Go!`);
 
     var i = 0;
@@ -55,4 +55,4 @@ class Flashcard {
 }
 
 let play = new Flashcard()
-play.run()
+play.game()
